@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Login() {
 
-    const [name,setName] = useState("esteban");
+    const [name,setName] = useState("");
     const [mostrarSaludo,SetMostrarSaludo] = useState(false)
 
     //funcion para guardar el nombre del input
