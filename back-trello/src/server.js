@@ -7,5 +7,15 @@ let users = [
     {id:2,name:'usuario 2'}
 ]
 
+
+
+
 //crear servidor 
-const server = http.createServer((req))
+const server = http.createServer((req,res)=>{
+
+
+
+
+
+}
+)
