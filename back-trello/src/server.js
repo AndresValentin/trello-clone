@@ -8,14 +8,28 @@ let users = [
 ]
 
 
-
+// Funcion para parsear el body de las peticiones POST
+const getRequestBody = (req) => {
+    return new promi
+}
 
 //crear servidor 
 const server = http.createServer((req,res)=>{
 
+    if (req.method === 'GET' && req.url==='api/users'){
 
-
+    }
 
 
 }
 )
+
+
+
+
+function saludar (nombre){
+    return 'hola ' + nombre
+}
+
+
+console.log(saludar('goku'))
