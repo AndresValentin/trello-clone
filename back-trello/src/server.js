@@ -10,7 +10,20 @@ let users = [
 
 // Funcion para parsear el body de las peticiones POST
 const getRequestBody = (req) => {
-    return new promi
+    return new Promise ((resolve,reject) =>{
+        let body = '';
+        req.on('data', chunk => {
+            bodt += chunk.toString();
+        });
+        req.on('end' , ()=> {
+            try{
+                resolve(JSON.parse(body));
+            } catch(error){
+                reject(error)
+            }
+
+        });
+    });
 }
 
 //crear servidor 
