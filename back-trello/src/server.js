@@ -1,5 +1,5 @@
 const http = require('http')
-
+const url = require('url')
 
 //datos de prueba para la api
 let users = [
@@ -7,42 +7,29 @@ let users = [
     {id:2,name:'usuario 2'}
 ]
 
-
-// Funcion para parsear el body de las peticiones POST
-const getRequestBody = (req) => {
-    return new Promise ((resolve,reject) =>{
-        let body = '';
-        req.on('data', chunk => {
-            bodt += chunk.toString();
-        });
-        req.on('end' , ()=> {
-            try{
-                resolve(JSON.parse(body));
-            } catch(error){
-                reject(error)
-            }
-
-        });
-    });
-}
-
-//crear servidor 
-const server = http.createServer((req,res)=>{
-
-    if (req.method === 'GET' && req.url==='api/users'){
-
+//crear servidor
+const server = http.createServer((req,res) =>{
+    const parsedUrl = url.parse(req.url,true);
+    
+    //detectar ruta y metodo
+    if (req.method == 'GET' && parsedUrl.pathname === '/api/users'){
+        //respuesta
+        res.writeHead(200,{'Content-Type': 'applicationi/json'});
+        res.end(JSON.stringify(users));
+    } else {
+        res.writeHead(404);
+        res.end('Ruta no encontrada');
     }
-
-
 }
 )
 
+//6.Iniciar servidor
+server.listen(3000,() =>{
+    console.log('servidor corriendo en http://localhost:3000');
+})
 
 
 
-function saludar (nombre){
-    return 'hola ' + nombre
-}
 
 
-console.log(saludar('goku'))
+// Crear una api , metodo get para obtener usuarios 
