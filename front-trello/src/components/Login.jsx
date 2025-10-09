@@ -1,41 +1,41 @@
 import { useState } from "react";
+import "../styles/login.css";
 
 function Login() {
 
-    const [name,setName] = useState("");
-    const [mostrarSaludo,SetMostrarSaludo] = useState(false)
+    const [username,setUsername] = useState("");
+    const [password,setPassword] = useState("");
+    const [forgotPassword,SetForgotpassword] = useState("");
 
-    //funcion para guardar el nombre del input
-    const cambiarNombre = (e) => {
-        setName(e.target.value)
+    const handleSubmit = (e) => {
+        //validar campos
+        if(!username || !password){
+            alert("Por favor completa todos los campos")
+        }
+
+        //acciones del login 
     }
-
-    //Funcion para mostrar el nombre del input
-    const clickButton = (e) => {
-        SetMostrarSaludo(true)
-    }
-
 
     return(
         <div>
-        <h1>Pantalla de Login</h1>
+        <h1>Iniciar Sesion</h1>
+        <form>
+        <label>Usuario</label>
         <input 
             type="text" 
-            value={name}
-            onChange={cambiarNombre}
-            placeholder="Ingresa tu nombre"
+            value={username}
+            onChange={setUsername}
+            placeholder="Ingresa tu usuario"
         ></input>
+        <label>contraseña</label>
+        <input
+            type = "password"
+            value={password}
+            onChange={setPassword}
+        ></input>
+        </form>
 
-        <button 
-            onClick={clickButton}
-            
-        >saludar</button>
-        {/* EL H1 QUE APARECE/DESAPARECE */}
-            {mostrarSaludo && (
-                name.trim() === "" ? 
-                <h1>No hay nombre aún</h1> : 
-                <h1>¡Hola {name}!</h1>
-            )}
+
         </div>
     )
  }
