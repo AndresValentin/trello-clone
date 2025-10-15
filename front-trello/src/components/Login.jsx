@@ -5,7 +5,9 @@ function Login() {
 
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
-    const [forgotPassword,SetForgotpassword] = useState("");
+    const [forgotPassword,SetForgotpassword] = useState(""); /// Feature olvide mi contraseña
+    const [showForgotModal, setShowForgotModal] = useState(false) 
+
 
     const handleSubmit = (e) => {
         //validar campos
@@ -24,19 +26,23 @@ function Login() {
         <input 
             type="text" 
             value={username}
-            onChange={setUsername}
+            onChange={(e) => {
+                setUsername(e.target.value);
+            }}
             placeholder="Ingresa tu usuario"
-        ></input>
+        />
         <label>contraseña</label>
         <input
             type = "password"
             value={password}
-            onChange={setPassword}
+            onChange={(e) => {
+                setPassword(e.target.value)
+            }}
         ></input>
         </form>
-
-
+        <button>Olvide mi constraseña</button>
         </div>
+
     )
  }
  export default Login;
