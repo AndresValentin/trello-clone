@@ -1,11 +1,12 @@
 import { useState } from "react";
+import "./popup";
 import "../styles/login.css";
+import Popup from "./popup";
 
 function Login() {
 
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
-    const [forgotPassword,SetForgotpassword] = useState(""); /// Feature olvide mi contraseña
     const [showForgotModal, setShowForgotModal] = useState(false) 
 
 
@@ -40,7 +41,12 @@ function Login() {
             }}
         ></input>
         </form>
-        <button>Olvide mi constraseña</button>
+        <button type="button" onClick={(e) => {
+            setShowForgotModal(true)
+        }}
+        >Olvide mi constraseña
+        </button>
+        <Popup></Popup>
         </div>
 
     )
